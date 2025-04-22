@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/owenthereal/goup/internal/commands"
 	"github.com/sirupsen/logrus"
+	"github.com/wjc133/goup/internal/commands"
 )
 
 func main() {

@@ -168,8 +168,6 @@ github.com/olekukonko/tablewriter v0.0.6-0.20210304033056-74c60be0ef68 h1:sB6FDv
 github.com/olekukonko/tablewriter v0.0.6-0.20210304033056-74c60be0ef68/go.mod h1:8Hf+pH6thup1sPZPD+NLg7d6vbpsdilu9CPIeikvgMQ=
 github.com/onsi/ginkgo v1.6.0/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
 github.com/onsi/gomega v1.5.0/go.mod h1:ex+gbHU/CVuBBDIJjb2X0qEXbFg53c61hWP/1CpauHY=
-github.com/owenthereal/goup v0.7.0 h1:b5vsVE+ME7xupnAKILvQsaQ6D5LsgbleudBoLceoNPY=
-github.com/owenthereal/goup v0.7.0/go.mod h1:gm3FLSUqsfXu0b31nBP31y4/OEEK7KOf8OsME8O0ljw=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
