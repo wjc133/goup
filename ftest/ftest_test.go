@@ -58,7 +58,7 @@ func TestGoup(t *testing.T) {
 
 		// check file exists
 		filesShouldExist := []string{
-			commands.GoupDir(),
+			commands.GoBaseDir(),
 			commands.GoupEnvFile(),
 			commands.GoupBinDir(),
 			commands.GoupCurrentDir(),

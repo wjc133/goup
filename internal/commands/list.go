@@ -1,9 +1,7 @@
 package commands
 
 import (
-	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -27,11 +25,6 @@ func runList(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	if len(vers) == 0 {
-		showGoIfExist()
-		return nil
-	}
-
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Version", "Active"})
 	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -51,23 +44,24 @@ func runList(cmd *cobra.Command, args []string) error {
 	return nil
 }
 
-func showGoIfExist() {
-	goBin, err := exec.LookPath("go")
-	if err == nil {
-		fmt.Printf("No Go is installed by Goup. Using system Go %q.\n", goBin)
-	} else {
-		fmt.Println("No Go is installed by Goup.")
-	}
-}
-
 type goVer struct {
 	Ver     string
 	Current bool
 }
 
 func listGoVers() ([]goVer, error) {
-	baseDir := GoupDir()
-	files, err := os.ReadDir(baseDir)
+	goVersions := make([]goVer, 0)
+	baseDir := GoBaseDir()
+	baseDirVersions, err := findGoVers(baseDir)
+	if err != nil {
+		return nil, err
+	}
+	goVersions = append(goVersions, baseDirVersions...)
+	return goVersions, nil
+}
+
+func findGoVers(dirPath string) ([]goVer, error) {
+	files, err := os.ReadDir(dirPath)
 	if err != nil {
 		return nil, err
 	}
@@ -82,11 +76,7 @@ func listGoVers() ([]goVer, error) {
 		if !file.IsDir() {
 			continue
 		}
-		if strings.HasPrefix(file.Name(), "go") {
-			// will not set installed for the gotip, so should not check installed for it
-			if file.Name() != "gotip" && !checkInstalled(filepath.Join(baseDir, file.Name())) {
-				continue
-			}
+		if strings.HasPrefix(file.Name(), "go") || file.Name() == "gotips" {
 			vers = append(vers, goVer{
 				Ver:     strings.TrimPrefix(file.Name(), "go"),
 				Current: current == file.Name(),

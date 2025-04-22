@@ -12,8 +12,8 @@ import (
 )
 
 const (
-	GoupEnvFileContent       = `export PATH="$HOME/.go/bin:$HOME/.go/current/bin:$PATH"`
-	ProfileFileSourceContent = `source "$HOME/.go/env"`
+	GoupEnvFileContent       = `export PATH="$HOME/go/current/bin:$PATH"`
+	ProfileFileSourceContent = `source "$HOME/go/env"`
 
 	welcomeTmpl = `Welcome to Goup!
 
@@ -73,7 +73,7 @@ func runInit(cmd *cobra.Command, args []string) error {
 		CurrentGoBinDir string
 		ProfileFiles    []string
 	}{
-		GoupDir:         GoupDir(),
+		GoupDir:         GoBaseDir(),
 		GoupBinDir:      GoupBinDir(),
 		CurrentGoBinDir: GoupCurrentBinDir(),
 		ProfileFiles:    ProfileFiles,
@@ -176,13 +176,6 @@ func checkStringExistsFile(filename, value string) (bool, error) {
 	}
 
 	return false, scanner.Err()
-}
-
-func checkInstalled(targetDir string) bool {
-	if _, err := os.Stat(filepath.Join(targetDir, unpackedOkay)); err == nil {
-		return true
-	}
-	return false
 }
 
 func setInstalled(targetDir string) error {

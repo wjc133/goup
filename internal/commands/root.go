@@ -55,30 +55,34 @@ func NewCommand() *cobra.Command {
 }
 
 func GoupBinDir() string {
-	return GoupDir("bin")
+	return GoBaseDir("bin")
 }
 
 func GoupCurrentDir() string {
-	return GoupDir("current")
+	return GoBaseDir("current")
 }
 
 func GoupEnvFile() string {
-	return GoupDir("env")
+	return GoBaseDir("env")
 }
 
 func GoupCurrentBinDir() string {
-	return GoupDir("current", "bin")
+	return GoBaseDir("current", "bin")
 }
 
 func goupVersionDir(ver string) string {
-	return GoupDir(ver)
+	return GoBaseDir(ver)
 }
 
-func GoupDir(paths ...string) string {
-	elem := []string{homedir, ".go"}
+func GoBaseDir(paths ...string) string {
+	elem := []string{homedir, "go"}
 	elem = append(elem, paths...)
 
 	return filepath.Join(elem...)
+}
+
+func HomebrewGoDir() string {
+	return "/opt/homebrew/Cellar/go"
 }
 
 func preRunRoot(cmd *cobra.Command, args []string) error {

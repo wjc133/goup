@@ -35,7 +35,7 @@ func runRemove(cmd *cobra.Command, args []string) error {
 
 		}
 
-		if err := os.RemoveAll(GoupDir(ver)); err != nil {
+		if err := os.RemoveAll(GoBaseDir(ver)); err != nil {
 			return err
 		}
 	}

@@ -29,11 +29,6 @@ func runSetDefault(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	if len(vers) == 0 {
-		showGoIfExist()
-		return nil
-	}
-
 	var (
 		pos int
 	)

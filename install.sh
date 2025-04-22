@@ -30,7 +30,7 @@ main() {
   esac
 
   local _url="${GOUP_UPDATE_ROOT}/${_arch}${_ext}"
-  local _dir="$HOME/.go/bin"
+  local _dir="$HOME/go/bin"
   local _file="${_dir}/goup${_ext}"
 
   ensure mkdir -p "$_dir"

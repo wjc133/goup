@@ -198,10 +198,10 @@ func symlink(ver string) error {
 func install(version string) error {
 	targetDir := goupVersionDir(version)
 
-	if checkInstalled(targetDir) {
-		logger.Printf("%s: already installed in %v", version, targetDir)
-		return nil
-	}
+	// if checkInstalled(targetDir) {
+	// 	logger.Printf("%s: already installed in %v", version, targetDir)
+	// 	return nil
+	// }
 
 	goURL := versionArchiveURL(version)
 	res, err := http.Head(goURL)
